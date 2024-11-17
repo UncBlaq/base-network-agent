@@ -51,7 +51,6 @@ streamlit run src/streamlit_app.py
 The repository is structured as follows:
 
 - `src/agents/research_assistant.py`: Defines the main LangGraph agent
-- `src/agents/llama_guard.py`: Defines the LlamaGuard content moderation
 - `src/agents/models.py`: Configures available models based on ENV
 - `src/agents/agents.py`: Mapping of all agents provided by the service
 - `src/schema/schema.py`: Defines the protocol schema
