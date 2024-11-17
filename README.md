@@ -70,7 +70,7 @@ AI agents are increasingly being built with more explicitly structured and tight
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/JoshuaC215/agent-service-toolkit.git
+   git clone https://github.com/abeenoch/base-network-agent.git
    cd agent-service-toolkit
    ```
 
