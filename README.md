@@ -149,24 +149,7 @@ The agent supports [LangGraph Studio](https://github.com/langchain-ai/langgraph-
 
 You can simply install LangGraph Studio, add your `.env` file to the root directory as described above, and then launch LangGraph studio pointed at the root directory. Customize `langgraph.json` as needed.
 
-### Contributing
 
-Currently the tests need to be run using the local development without Docker setup. To run the tests for the agent service:
-
-1. Ensure you're in the project root directory and have activated your virtual environment.
-
-2. Install the development dependencies and pre-commit hooks:
-
-   ```sh
-   pip install uv
-   uv sync --frozen --extra dev
-   pre-commit install
-   ```
-
-3. Run the tests using pytest:
-
-   ```sh
-   pytest
    ```
 
 ## Customization
