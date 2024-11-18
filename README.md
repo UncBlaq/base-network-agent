@@ -68,7 +68,7 @@ AI agents are increasingly being built with more explicitly structured and tight
 
    ```sh
    git clone https://github.com/abeenoch/base-network-agent.git
-   cd agent-service-toolkit
+   cd base-network-agent
    ```
 
 2. Set up environment variables:
