@@ -140,14 +140,6 @@ You can also run the agent service and the Streamlit app locally without Docker,
 
 4. Open your browser and navigate to the URL provided by Streamlit (usually `http://localhost:8501`).
 
-### Development with LangGraph Studio
-
-The agent supports [LangGraph Studio](https://github.com/langchain-ai/langgraph-studio), a new IDE for developing agents in LangGraph.
-
-You can simply install LangGraph Studio, add your `.env` file to the root directory as described above, and then launch LangGraph studio pointed at the root directory. Customize `langgraph.json` as needed.
-
-
-   ```
 
 ## Customization
 
