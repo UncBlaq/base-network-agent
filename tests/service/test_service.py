@@ -7,7 +7,7 @@ from langgraph.pregel.types import StateSnapshot
 
 from agents import DEFAULT_AGENT
 from schema import ChatHistory, ChatMessage
-from service import app
+from main import app
 
 test_client = TestClient(app)
 
