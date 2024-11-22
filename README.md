@@ -21,6 +21,8 @@ echo 'OPENAI_API_KEY=your_openai_api_key' >> .env
 # uv is recommended but "pip install ." also works
 pip install uv
 uv sync --frozen
+# Or install all the libaries once with
+pip install -r requirements.txt
 
 # edit(comment either of the two) code in to choose if you want test with streamlit or swagger docs
 
