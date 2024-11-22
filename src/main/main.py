@@ -66,10 +66,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # context manager will clean up the AsyncSqliteSaver on exit
 
 
-app = FastAPI(
-    lifespan=lifespan,
-    title="Base Network Fork"
-    )
+app = FastAPI(lifespan=lifespan, title="Base Network Fork")
 
 app.include_router(user_router)
 # app.include_router(admin_router)
@@ -88,7 +85,6 @@ def _parse_input(user_input: UserInput) -> tuple[dict[str, Any], str]:
         ),
     }
     return kwargs, run_id
-
 
 
 @router.post("/{agent_id}/invoke")

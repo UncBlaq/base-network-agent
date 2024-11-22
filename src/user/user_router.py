@@ -6,10 +6,7 @@ from schema import (
 from agent_services import ainvoke
 
 
-user_router = APIRouter(
-    prefix="/user",
-    tags=["User"]
-)
+user_router = APIRouter(prefix="/user", tags=["User"])
 
 
 @user_router.post("/invoke")
@@ -21,5 +18,3 @@ async def invoke(user_input: UserInput) -> ChatMessage:
     is also attached to messages for recording feedback.
     """
     return await ainvoke(user_input=user_input)
-
-

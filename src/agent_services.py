@@ -18,6 +18,7 @@ from agent_utils import (
 
 logger = logging.getLogger(__name__)
 
+
 def _parse_input(user_input: UserInput) -> tuple[dict[str, Any], str]:
     run_id = uuid4()
     thread_id = user_input.thread_id or str(uuid4())
@@ -28,6 +29,7 @@ def _parse_input(user_input: UserInput) -> tuple[dict[str, Any], str]:
         ),
     }
     return kwargs, run_id
+
 
 async def ainvoke(user_input: UserInput, agent_id: str = DEFAULT_AGENT) -> ChatMessage:
     agent: CompiledStateGraph = agents[agent_id]

@@ -10,7 +10,7 @@
 #     raise ValueError("SECRET_KEY environment variable is not set")
 # serializer = URLSafeTimedSerializer(
 #     SECRET_KEY,
-#     salt="email-Configuration" 
+#     salt="email-Configuration"
 #     )
 
 

@@ -1,5 +1,5 @@
 # from fastapi import APIRouter, BackgroundTasks
-# from email_utils import SmtpMailService 
+# from email_utils import SmtpMailService
 
 # admin_router = APIRouter(
 #     prefix="/admin",
@@ -25,11 +25,5 @@
 #     smtp_service = SmtpMailService(recipients)
 #     background_task.add_task(smtp_service.send_tvl_email)
 #     return "Email sent successfully"
-
-
-
-
- 
-
 
 
