@@ -27,11 +27,16 @@ from schema import (
     StreamInput,
     UserInput,
 )
-from service.utils import (
+
+from agent_services import ainvoke
+from agent_utils import (
     convert_message_content_to_string,
     langchain_to_chat_message,
     remove_tool_calls,
 )
+
+from user.user_router import user_router
+# from admin.admin_router import admin_router
 
 warnings.filterwarnings("ignore", category=LangChainBetaWarning)
 logger = logging.getLogger(__name__)
@@ -61,7 +66,15 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # context manager will clean up the AsyncSqliteSaver on exit
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    lifespan=lifespan,
+    title="Base Network Fork"
+    )
+
+app.include_router(user_router)
+# app.include_router(admin_router)
+
+
 router = APIRouter(dependencies=bearer_depend)
 
 
@@ -76,29 +89,6 @@ def _parse_input(user_input: UserInput) -> tuple[dict[str, Any], str]:
     }
     return kwargs, run_id
 
-
-async def ainvoke(user_input: UserInput, agent_id: str = DEFAULT_AGENT) -> ChatMessage:
-    agent: CompiledStateGraph = agents[agent_id]
-    kwargs, run_id = _parse_input(user_input)
-    try:
-        response = await agent.ainvoke(**kwargs)
-        output = langchain_to_chat_message(response["messages"][-1])
-        output.run_id = str(run_id)
-        return output
-    except Exception as e:
-        logger.error(f"An exception occurred: {e}")
-        raise HTTPException(status_code=500, detail="Unexpected error")
-
-
-@router.post("/invoke")
-async def invoke(user_input: UserInput) -> ChatMessage:
-    """
-    Invoke the default agent with user input to retrieve a final response.
-
-    Use thread_id to persist and continue a multi-turn conversation. run_id kwarg
-    is also attached to messages for recording feedback.
-    """
-    return await ainvoke(user_input=user_input)
 
 
 @router.post("/{agent_id}/invoke")

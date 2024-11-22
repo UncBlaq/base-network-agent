@@ -21,6 +21,9 @@ echo 'OPENAI_API_KEY=your_openai_api_key' >> .env
 # uv is recommended but "pip install ." also works
 pip install uv
 uv sync --frozen
+
+# edit(comment either of the two) code in to choose if you want test with streamlit or swagger docs
+
 # "uv sync" creates .venv automatically
 source .venv/bin/activate
 python src/run_service.py
