@@ -43,6 +43,10 @@ streamlit run src/streamlit_app.py
 
 1. **LangGraph Agent**: A customizable agent built using the LangGraph framework.
 1. **FastAPI Service**: Serves the agent with both streaming and non-streaming endpoints.
+1.**PostgreSQL Database Support**:  Uses PostgreSQL with an asynchronous engine to handle database operations efficiently.
+1.**Asynchronous Requests**:  Fully supports asynchronous processing for high-concurrency applications.
+1.**Docker Suppor**: Simplifies deployment with a preconfigured Dockerfile.
+1.**Render Hosting**:Backend hosted on Render for streamlined deployment and scalability.
 1. **Advanced Streaming**: A novel approach to support both token-based and message-based streaming.
 1. **Streamlit Interface**: Provides a user-friendly chat interface for interacting with the agent.
 1. **Multiple Agent Support**: Run multiple agents in the service and call by URL path
@@ -60,6 +64,7 @@ The repository is structured as follows:
 - `src/service/service.py`: FastAPI service to serve the agents
 - `src/client/client.py`: Client to interact with the agent service
 - `src/streamlit_app.py`: Streamlit app providing a chat interface
+-  Dockerfile: Defines the container environment for the project.
 
 ## Why LangGraph?
 
