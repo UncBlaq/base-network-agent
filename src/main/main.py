@@ -7,6 +7,8 @@ from contextlib import asynccontextmanager
 from typing import Annotated, Any
 from uuid import uuid4
 
+
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, status
 from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -71,6 +73,15 @@ app = FastAPI(
     description="A base network fork for language-based AI agents.",
     version="1.0.0"
     )
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 
 
 
