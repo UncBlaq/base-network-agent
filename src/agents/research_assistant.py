@@ -18,12 +18,13 @@ from agents.tools import calculator
 
 import requests
 
+
 class DevBotTools:
     @staticmethod
     def base_network_info(query: str) -> dict:
         """
         Perform a general internet search to retrieve information about the Base network.
-        
+
         Parameters:
         - query (str): The query or topic about the Base network.
 
@@ -43,7 +44,7 @@ class DevBotTools:
             response.raise_for_status()
             search_results = response.json()
             results = search_results.get("RelatedTopics", [])
-            
+
             # Process and format results
             if results:
                 processed_results = [
@@ -52,14 +53,16 @@ class DevBotTools:
                     if "Text" in item and "FirstURL" in item
                 ]
                 return {"results": processed_results[:5]}  # Return the top 5 results
-            
+
             return {"message": "No relevant results found for your query."}
         except requests.Timeout:
-            return {"error": "Timeout Error", "message": "The search request timed out. Please try again."}
+            return {
+                "error": "Timeout Error",
+                "message": "The search request timed out. Please try again.",
+            }
         except requests.RequestException as e:
             return {"error": "Network Error", "message": str(e)}
-        
-        
+
     @staticmethod
     def crypto_price(query: str) -> dict:
         """
@@ -84,14 +87,16 @@ class DevBotTools:
                 price = data[query.lower()]["usd"]
                 return {"message": f"The current price of {query.upper()} is ${price:.2f} USD."}
             else:
-                return {"message": f"Unable to retrieve the price for '{query}'. Please check the cryptocurrency name or symbol."}
+                return {
+                    "message": f"Unable to retrieve the price for '{query}'. Please check the cryptocurrency name or symbol."
+                }
         except requests.Timeout:
-            return {"error": "Timeout Error", "message": "The request to CoinGecko timed out. Please try again later."}
+            return {
+                "error": "Timeout Error",
+                "message": "The request to CoinGecko timed out. Please try again later.",
+            }
         except requests.RequestException as e:
             return {"error": "Network Error", "message": str(e)}
-
-
-    
 
 
 web_search = DuckDuckGoSearchResults(name="WebSearch")
@@ -143,11 +148,11 @@ async def acall_model(state: MessagesState, config: RunnableConfig) -> MessagesS
     safety_output = await llama_guard.ainvoke("Agent", state["messages"] + [response])
     if safety_output.safety_assessment == SafetyAssessment.UNSAFE:
         return {"messages": [format_safety_message(safety_output)], "safety": safety_output}
-    
+
     if "is_last_step" not in state:
         state["is_last_step"] = False
 
-    if state ["is_last_step"] and response.tool_calls:
+    if state["is_last_step"] and response.tool_calls:
         return {
             "messages": [
                 AIMessage(
