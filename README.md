@@ -35,10 +35,6 @@ source .venv/bin/activate
 streamlit run src/streamlit_app.py
 ```
 
-### Architecture Diagram
-
-<img src="media/agent_architecture.png" width="600">
-
 ### Key Features
 
 1. **LangGraph Agent**: A customizable agent built using the LangGraph framework.
