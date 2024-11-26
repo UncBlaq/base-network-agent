@@ -13,11 +13,8 @@ async def collect_email(db, email: str):
     await db.commit()
     await db.refresh(new_subscriber)
 
-    # Access attributes immediately
-    email_value = new_subscriber.email
+    return {"message": f"Subscription activated"}
 
-    return {"message": f"Email {email_value} collected successfully"}
-from sqlalchemy.future import select
 
 
 
